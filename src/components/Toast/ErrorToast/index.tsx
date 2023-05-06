@@ -1,7 +1,7 @@
 import React, { MutableRefObject } from "react";
 import { GoAlert } from "react-icons/go";
 
-function Toast({
+function ErrorToast({
   content,
   toastRef,
 }: {
@@ -12,13 +12,13 @@ function Toast({
     <>
       <div
         ref={toastRef}
-        className="toast-animation relative flex items-center gap-2 rounded-lg bg-blue-950 px-6 py-3 text-center font-medium text-white"
+        className="toast-animation relative flex min-w-[200px] items-center gap-2 rounded-lg bg-red-950 px-6 py-3 text-center font-medium text-white"
       >
         <GoAlert />
-        {content}
+        <div className="flex flex-1 items-center justify-center">{content}</div>
       </div>
     </>
   );
 }
 
-export default Toast;
+export default ErrorToast;
