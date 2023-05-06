@@ -1,13 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+#root {
+  position: relative;
+}
+
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+@layer utilities {
+  .popup-background {
+    @apply bg-black bg-opacity-50;
+  }
+
+  .popup-animation {
+    animation: 0.12s show forwards ease-out;
+  }
+
+  .dismiss-popup {
+    animation: 0.12s erase forwards ease-out;
+  }
+
+  @keyframes show {
+    from {
+      transform: scale(0.96);
+      opacity: 0.2;
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes erase {
+    from {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    to {
+      transform: scale(0.96);
+      opacity: 0;
+    }
+  }
+}
+
+@layer utilities {
+  .toast-animation {
+    animation: 0.2s showToast forwards ease-out;
+  }
+
+  .dismiss-toast {
+    animation: 0.4s hideToast forwards ease-out;
+  }
+
+  @keyframes showToast {
+    from {
+      transform: translateX(200px);
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0px);
+    }
+  }
+
+  @keyframes hideToast {
+    from {
+      opacity: 1;
+      transform: translateX(0px);
+    }
+
+    to {
+      transform: translateX(200px);
+      opacity: 0;
+    }
+  }
 }
